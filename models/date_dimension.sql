@@ -9,11 +9,11 @@ HOUR(to_timestamp(STARTED_AT)) as HOUR_STARTED_AT,
 {{get_season('STARTED_AT')}} AS STATION_OF_YEAR
 
 
-FROM 
-{{ source('demo', 'bike') }}
+ 
+from {{ ref('stg_bike') }}
 where STARTED_AT != 'started_at'
 )
 
-SELECT 
+SELECT
 * 
 FROM CTE
